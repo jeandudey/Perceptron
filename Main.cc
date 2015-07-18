@@ -143,6 +143,19 @@ void TumorDetectionPerceptron()
 {
     std::cout << "Training Custom Perceptron..." << std::endl;
 
+    /*
+     *    1 |           x x x
+     *      |
+     *      |
+     * Type |
+     *      |
+     *      |
+     *      |
+     *      | x x x
+     *    0 |____________________________
+     *                    Size
+     */
+
     std::vector<TrainingItem> training_set =
     {
         /**
