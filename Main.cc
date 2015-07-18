@@ -139,6 +139,41 @@ void NOTPerceptron()
     std::cout << std::endl;
 }
 
+void TumorDetectionPerceptron()
+{
+    std::cout << "Training Custom Perceptron..." << std::endl;
+
+    std::vector<TrainingItem> training_set =
+    {
+        /**
+         * false = benign
+         * true  = !false (malign :p)
+         *                       Tumor size.
+         */
+        TrainingItem(false, { 1, 0.1 }),
+        TrainingItem(false, { 1, 0.2 }),
+        TrainingItem(false, { 1, 0.3 }),
+        TrainingItem(true,  { 1, 0.4 }),
+        TrainingItem(true,  { 1, 0.5 }),
+        TrainingItem(true,  { 1, 0.6 }),
+    };
+
+    Perceptron perceptron(2);
+
+    perceptron.train(training_set);
+
+    assert(perceptron.get_result({ 1, 0.1 }) == false);
+    assert(perceptron.get_result({ 1, 0.2 }) == false);
+    assert(perceptron.get_result({ 1, 0.3 }) == false);
+    assert(perceptron.get_result({ 1, 0.4 }) == true);
+    assert(perceptron.get_result({ 1, 0.5 }) == true);
+    assert(perceptron.get_result({ 1, 0.6 }) == true);
+    assert(perceptron.get_result({ 1, 0.7 }) == true);
+
+    std::cout << "Successfully trained!" << std::endl;
+    std::cout << std::endl;
+}
+
 int main(int argc, char **argv)
 {
     std::cout << "Single Layer Perceptron (SLP)  Copyright 2015  Jean Pierre Dudey" << std::endl;
@@ -153,6 +188,8 @@ int main(int argc, char **argv)
     ORPerceptron();
     NORPerceptron();
     NOTPerceptron();
+
+    TumorDetectionPerceptron();
 
     return 0;
 }
