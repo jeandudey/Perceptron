@@ -70,6 +70,31 @@ void NANDPerceptron()
     std::cout << std::endl;
 }
 
+void ORPerceptron()
+{
+    std::cout << "Training OR Perceptron..." << std::endl;
+
+    std::vector<TrainingItem> training_set =
+    {
+        TrainingItem(false, { 1, 0, 0 }),
+        TrainingItem(true,  { 1, 0, 1 }),
+        TrainingItem(true,  { 1, 1, 0 }),
+        TrainingItem(true,  { 1, 1, 1 })
+    };
+
+    Perceptron perceptron(3);
+
+    perceptron.train(training_set);
+
+    assert(perceptron.get_result({ 1, 0, 0 }) == false);
+    assert(perceptron.get_result({ 1, 0, 1 }) == true);
+    assert(perceptron.get_result({ 1, 1, 0 }) == true);
+    assert(perceptron.get_result({ 1, 1, 1 }) == true);
+    std::cout << "Successfully trained!" << std::endl;
+    std::cout << std::endl;
+}
+
+
 int main(int argc, char **argv)
 {
     std::cout << "Single Layer Perceptron (SLP)  Copyright 2015  Jean Pierre Dudey" << std::endl;
@@ -81,6 +106,7 @@ int main(int argc, char **argv)
 
     ANDPerceptron();
     NANDPerceptron();
+    ORPerceptron();
 
     return 0;
 }
