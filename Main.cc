@@ -24,6 +24,11 @@
 
 int main(int argc, char **argv)
 {
+    std::cout << "Single Layer Perceptron (SLP)  Copyright 2015  Jean Pierre Dudey" << std::endl;
+    std::cout << "This program comes with ABSOLUTELY NO WARRANTY." << std::endl;
+    std::cout << "This is free software, and you are welcome to redistribute it" << std::endl;
+    std::cout << "under certain conditions." << std::endl;
+
     std::vector<TrainingItem> training_set =
     {
         TrainingItem(true,  { 1, 0, 0 }),
