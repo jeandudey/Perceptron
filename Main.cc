@@ -22,12 +22,33 @@
 
 #include "Perceptron.hpp"
 
-int main(int argc, char **argv)
+void ANDPerceptron()
 {
-    std::cout << "Single Layer Perceptron (SLP)  Copyright 2015  Jean Pierre Dudey" << std::endl;
-    std::cout << "This program comes with ABSOLUTELY NO WARRANTY." << std::endl;
-    std::cout << "This is free software, and you are welcome to redistribute it" << std::endl;
-    std::cout << "under certain conditions." << std::endl;
+    std::cout << "Training AND Perceptron..." << std::endl;
+
+    std::vector<TrainingItem> training_set =
+    {
+        TrainingItem(false, { 1, 0, 0 }),
+        TrainingItem(false, { 1, 0, 1 }),
+        TrainingItem(false, { 1, 1, 0 }),
+        TrainingItem(true,  { 1, 1, 1 })
+    };
+
+    Perceptron perceptron(3);
+
+    perceptron.train(training_set);
+
+    assert(perceptron.get_result({ 1, 0, 0 }) == false);
+    assert(perceptron.get_result({ 1, 0, 1 }) == false);
+    assert(perceptron.get_result({ 1, 1, 0 }) == false);
+    assert(perceptron.get_result({ 1, 1, 1 }) == true);
+    std::cout << "Successfully trained!" << std::endl;
+    std::cout << std::endl;
+}
+
+void NANDPerceptron()
+{
+    std::cout << "Training NAND Perceptron..." << std::endl;
 
     std::vector<TrainingItem> training_set =
     {
@@ -45,6 +66,21 @@ int main(int argc, char **argv)
     assert(perceptron.get_result({ 1, 0, 1 }) == true);
     assert(perceptron.get_result({ 1, 1, 0 }) == true);
     assert(perceptron.get_result({ 1, 1, 1 }) == false);
+    std::cout << "Successfully trained!" << std::endl;
+    std::cout << std::endl;
+}
+
+int main(int argc, char **argv)
+{
+    std::cout << "Single Layer Perceptron (SLP)  Copyright 2015  Jean Pierre Dudey" << std::endl;
+    std::cout << "This program comes with ABSOLUTELY NO WARRANTY." << std::endl;
+    std::cout << "This is free software, and you are welcome to redistribute it" << std::endl;
+    std::cout << "under certain conditions." << std::endl;
+
+    std::cout << std::endl;
+
+    ANDPerceptron();
+    NANDPerceptron();
 
     return 0;
 }
