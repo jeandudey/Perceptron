@@ -48,6 +48,23 @@ class Perceptron
   std::vector<double> & weights() { return weights_; }
   void weights(const std::vector<double> &weights) { weights_ = weights; }
 
+  void train(std::vector<TrainingItem> & training_set)
+  {
+    while (true) {
+        int error_count = 0;
+
+        for (auto &item : training_set) {
+            bool output = learn(item.output(), item.inputs());
+
+            if (output != item.output())
+                error_count++;
+        }
+
+        if (error_count == 0)
+            break;
+    }
+  }
+
   bool get_result(const std::vector<double> &inputs)
   {
     if (inputs.size() != weights_.size())

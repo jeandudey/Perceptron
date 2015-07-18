@@ -32,21 +32,9 @@ int main(int argc, char **argv)
         TrainingItem(false, { 1, 1, 1 })
     };
 
-    auto perceptron = Perceptron(3);
+    Perceptron perceptron(3);
 
-    while (true) {
-        int error_count = 0;
-
-        for (auto &item : training_set) {
-            bool output = perceptron.learn(item.output(), item.inputs());
-
-            if (output != item.output())
-                error_count++;
-        }
-
-        if (error_count == 0)
-            break;
-    }
+    perceptron.train(training_set);
 
     assert(perceptron.get_result({ 1, 0, 0 }) == true);
     assert(perceptron.get_result({ 1, 0, 1 }) == true);
