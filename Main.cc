@@ -94,6 +94,30 @@ void ORPerceptron()
     std::cout << std::endl;
 }
 
+void NORPerceptron()
+{
+    std::cout << "Training NOR Perceptron..." << std::endl;
+
+    std::vector<TrainingItem> training_set =
+    {
+        TrainingItem(true,  { 1, 0, 0 }),
+        TrainingItem(false, { 1, 0, 1 }),
+        TrainingItem(false, { 1, 1, 0 }),
+        TrainingItem(false, { 1, 1, 1 })
+    };
+
+    Perceptron perceptron(3);
+
+    perceptron.train(training_set);
+
+    assert(perceptron.get_result({ 1, 0, 0 }) == true);
+    assert(perceptron.get_result({ 1, 0, 1 }) == false);
+    assert(perceptron.get_result({ 1, 1, 0 }) == false);
+    assert(perceptron.get_result({ 1, 1, 1 }) == false);
+    std::cout << "Successfully trained!" << std::endl;
+    std::cout << std::endl;
+}
+
 void NOTPerceptron()
 {
     std::cout << "Training NOT Perceptron..." << std::endl;
@@ -127,6 +151,7 @@ int main(int argc, char **argv)
     ANDPerceptron();
     NANDPerceptron();
     ORPerceptron();
+    NORPerceptron();
     NOTPerceptron();
 
     return 0;
