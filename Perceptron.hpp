@@ -37,8 +37,6 @@ class Perceptron
     threshold_ = threshold;
   }
 
-  ~Perceptron () { }
-
   double learning_rate() const { return learning_rate_; }
   void learning_rate(const double &learning_rate) { learning_rate_ = learning_rate; }
 
