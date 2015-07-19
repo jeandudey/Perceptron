@@ -36,7 +36,7 @@ void ANDPerceptron()
 
     Perceptron perceptron(3);
 
-    perceptron.train(training_set);
+    perceptron.train(training_set, 43);
 
     assert(perceptron.get_result({ 1, 0, 0 }) == false);
     assert(perceptron.get_result({ 1, 0, 1 }) == false);
@@ -60,7 +60,7 @@ void NANDPerceptron()
 
     Perceptron perceptron(3);
 
-    perceptron.train(training_set);
+    perceptron.train(training_set, 29);
 
     assert(perceptron.get_result({ 1, 0, 0 }) == true);
     assert(perceptron.get_result({ 1, 0, 1 }) == true);
@@ -84,7 +84,7 @@ void ORPerceptron()
 
     Perceptron perceptron(3);
 
-    perceptron.train(training_set);
+    perceptron.train(training_set, 14);
 
     assert(perceptron.get_result({ 1, 0, 0 }) == false);
     assert(perceptron.get_result({ 1, 0, 1 }) == true);
@@ -108,7 +108,7 @@ void NORPerceptron()
 
     Perceptron perceptron(3);
 
-    perceptron.train(training_set);
+    perceptron.train(training_set, 14);
 
     assert(perceptron.get_result({ 1, 0, 0 }) == true);
     assert(perceptron.get_result({ 1, 0, 1 }) == false);
@@ -130,7 +130,7 @@ void NOTPerceptron()
 
     Perceptron perceptron(2);
 
-    perceptron.train(training_set);
+    perceptron.train(training_set, 13);
 
     assert(perceptron.get_result({ 1, 0 }) == true);
     assert(perceptron.get_result({ 1, 1 }) == false);
@@ -173,7 +173,7 @@ void TumorDetectionPerceptron()
 
     Perceptron perceptron(2);
 
-    perceptron.train(training_set);
+    perceptron.train(training_set, 72);
 
     assert(perceptron.get_result({ 1, 0.1 }) == false);
     assert(perceptron.get_result({ 1, 0.2 }) == false);

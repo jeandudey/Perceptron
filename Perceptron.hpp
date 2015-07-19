@@ -46,9 +46,18 @@ class Perceptron
   std::vector<double> & weights() { return weights_; }
   void weights(const std::vector<double> &weights) { weights_ = weights; }
 
-  void train(std::vector<TrainingItem> & training_set)
+  void train(std::vector<TrainingItem> & training_set, unsigned int max_iterations)
   {
+    if (max_iterations == 0)
+      throw std::invalid_argument("The maximum number of iterations cannot be 0.");
+
+    unsigned int iterations(0);
     while (true) {
+        if (iterations > max_iterations)
+            break;
+        else
+            iterations++;
+
         int error_count = 0;
 
         for (auto &item : training_set) {
